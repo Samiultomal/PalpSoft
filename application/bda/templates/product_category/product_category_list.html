@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="panel">
+            <div class="panel-header">
+                <h5>All Product Category</h5>
+                <div class="btn-box d-flex gap-2">
+                    <div id="tableSearch"></div>
+                    <button class="btn btn-sm btn-icon btn-outline-primary" title="Download Excel" id="downloadExcel"><i class="fa-light fa-file-spreadsheet"></i></button>
+                    <div class="btn-box">
+                        <a href="{% url 'product_category_create' %}" class="btn btn-sm btn-primary"><i class="fa-light fa-plus"></i> Add New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="table-filter-option">
+                    <div class="row g-3">
+                        <div class="col-xl-10 col-9 col-xs-12">
+                            <div class="row g-3">
+                                <div class="col">
+                                    <input type="text" class="form-control form-control-sm" name="basic" id="orderTableFilter" readonly>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-sm btn-primary"><i class="fa-light fa-filter"></i> Filter</button>
+                                </div>
+                                <div class="col">
+                                    <div class="digi-dropdown dropdown">
+                                        <button class="btn btn-sm btn-icon btn-primary" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa-regular fa-plus"></i></button>
+                                        <ul class="digi-dropdown-menu dropdown-menu">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="filterDate" checked>
+                                                    <label class="form-check-label" for="filterDate">
+                                                        Date Range
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-dashed table-hover digi-dataTable all-product-table table-striped" id="allProductTable">
+                    <thead>
+                        <tr>
+                            <tr>
+                                <th>Category Name</th>
+                                <th>Trade Type</th>
+                                <th>Action</th>
+                            </tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <td>{{ category.name }}</td>
+                                <td>{{ category.trade_type }}</td>
+                                <td>
+                                    <div class="btn-box">
+                                        <a href="{% url 'product_category_update' pk=category.pk %}">
+                                            <button><i class="fa-light fa-pen"></i></button>
+                                        </a>
+                                        <a href="{% url 'product_category_delete' pk=category.pk %}">
+                                            <button><i class="fa-light fa-trash"></i></button>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="table-bottom-control"></div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+{% endblock %}

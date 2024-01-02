@@ -1,0 +1,31 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Optimized Route for Gift Delivery</h1>
+
+<h2>Optimized Route using OR-Tools</h2>
+{% if optimized_route_ortools %}
+    <p>The optimized route to deliver gifts using OR-Tools, starting from City Bank Uttara Branch, is:</p>
+    <ol>
+        {% for branch in optimized_route_ortools %}
+            <li>{{ branch.name }} - ({{ branch.latitude }}, {{ branch.longitude }})</li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <p>No optimized route available using OR-Tools.</p>
+{% endif %}
+
+<h2>Optimized Route using Greedy Solver</h2>
+{% if optimized_route_greedy %}
+    <p>The optimized route to deliver gifts using the Greedy Solver, starting from City Bank Uttara Branch, is:</p>
+    <ol>
+        {% for branch in optimized_route_greedy %}
+            <li>{{ branch.name }} - ({{ branch.latitude }}, {{ branch.longitude }})</li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <p>No optimized route available using the Greedy Solver.</p>
+{% endif %}
+{% endblock %}

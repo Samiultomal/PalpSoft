@@ -1,0 +1,12 @@
+<!-- tspapp/templates/tspapp/city_bank_branch_form.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{% if form.instance.pk %}Edit{% else %}Add{% endif %} City Bank Branch</h2>
+  <form method="post" action="{% if form.instance.pk %}{% url 'city_bank_branch_update' pk=form.instance.pk %}{% else %}{% url 'city_bank_branch_create' %}{% endif %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

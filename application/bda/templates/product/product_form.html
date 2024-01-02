@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-breadcrumb mb-25">
+    <h2>Add New Product</h2>
+</div>
+
+<div class="row">
+    <div class="col-xxl-4 col-md-12">
+        <div class="panel">
+            <div class="col-lg-12">
+                <div class="card mb-20">
+                    <div class="card-header">
+                        Product Form
+                    </div>
+                    <div class="card-body">
+                        <form method="post" class="row g-3" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="col-md-6">
+                                <label for="{{ form.product_name.id_for_label }}" class="form-label">Product Name</label>
+                                <input type="text" class="form-control" id="{{ form.product_name.id_for_label }}" name="{{ form.product_name.name }}"  placeholder="Enter Product Name">
+                                {% if form.product_name.errors %}
+                                    <div class="text-danger">{{ form.product_name.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.category.id_for_label }}" class="form-label">Category</label>
+                                <select class="form-select" id="{{ form.category.id_for_label }}" name="{{ form.category.name }}">
+                                    <option value="" {% if not form.category.value %}selected{% endif %} disabled hidden>Select Category</option>
+                                    {% for category in form.category.field.queryset %}
+                                        <option value="{{ category.pk }}" {% if form.category.value == category.pk %}selected{% endif %}>{{ category.name }}</option>
+                                    {% endfor %}
+                                </select>
+                                {% if form.category.errors %}
+                                    <div class="text-danger">{{ form.category.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.unit.id_for_label }}" class="form-label">Unit</label>
+                                <input type="text" class="form-control" id="{{ form.unit.id_for_label }}" name="{{ form.unit.name }}"placeholder="Enter Unit">
+                                {% if form.unit.errors %}
+                                    <div class="text-danger">{{ form.unit.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.sku.id_for_label }}" class="form-label">SKU</label>
+                                <input type="text" class="form-control" id="{{ form.sku.id_for_label }}" name="{{ form.sku.name }}" placeholder="Enter SKU" readonly>
+                                {% if form.sku.errors %}
+                                    <div class="text-danger">{{ form.sku.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.cost_price.id_for_label }}" class="form-label">Cost Price</label>
+                                <input type="number" class="form-control" id="{{ form.cost_price.id_for_label }}" name="{{ form.cost_price.name }}"placeholder="Enter Cost Price">
+                                {% if form.cost_price.errors %}
+                                    <div class="text-danger">{{ form.cost_price.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.selling_price.id_for_label }}" class="form-label">Selling Price</label>
+                                <input type="number" class="form-control" id="{{ form.selling_price.id_for_label }}" name="{{ form.selling_price.name }}"placeholder="Enter Selling Price" readonly>
+                                {% if form.selling_price.errors %}
+                                    <div class="text-danger">{{ form.selling_price.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.quantity_in_stock.id_for_label }}" class="form-label">Quantity in Stock</label>
+                                <input type="number" class="form-control" id="{{ form.quantity_in_stock.id_for_label }}" name="{{ form.quantity_in_stock.name }}" placeholder="Enter Quantity in Stock">
+                                {% if form.quantity_in_stock.errors %}
+                                    <div class="text-danger">{{ form.quantity_in_stock.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.stock_threshold.id_for_label }}" class="form-label">Stock Threshold</label>
+                                <input type="number" class="form-control" id="{{ form.stock_threshold.id_for_label }}" name="{{ form.stock_threshold.name }}" placeholder="Enter Stock Threshold" readonly>
+                                {% if form.stock_threshold.errors %}
+                                    <div class="text-danger">{{ form.stock_threshold.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.image.id_for_label }}" class="form-label">Image</label>
+                                <input type="file" class="form-control" id="{{ form.image.id_for_label }}" name="{{ form.image.name }}">
+                                {% if form.image.errors %}
+                                    <div class="text-danger">{{ form.image.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.supplier.id_for_label }}" class="form-label">Supplier</label>
+                                <select class="form-select" id="{{ form.supplier.id_for_label }}" name="{{ form.supplier.name }}">
+                                    <option value="" {% if not form.supplier.value %}selected{% endif %} disabled hidden>Select Supplier</option>
+                                    {% for supplier in form.supplier.field.queryset %}
+                                        <option value="{{ supplier.pk }}" {% if form.supplier.value == supplier.pk %}selected{% endif %}>{{ supplier.name }}</option>
+                                    {% endfor %}
+                                </select>
+                                {% if form.supplier.errors %}
+                                    <div class="text-danger">{{ form.supplier.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.barcode.id_for_label }}" class="form-label">Bar Code</label>
+                                <input type="text" class="form-control" id="{{ form.barcode.id_for_label }}" name="{{ form.barcode.name }}" value="{{ form.barcode.value }}" readonly>
+                                {% if form.barcode.errors %}
+                                    <div class="text-danger">{{ form.barcode.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            
+
+                            <div class="col-md-6">
+                                <label for="{{ form.is_active.id_for_label }}" class="form-label">Is Active</label>
+                                <input type="checkbox" class="form-check-input" id="{{ form.is_active.id_for_label }}" name="{{ form.is_active.name }}" {% if form.is_active.value %}checked{% endif %}>
+                                {% if form.is_active.errors %}
+                                    <div class="text-danger">{{ form.is_active.errors.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <a href="{% url 'product_list' %}" class="btn btn-primary">Back To List</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

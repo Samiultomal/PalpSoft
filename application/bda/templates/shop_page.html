@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    /* Custom CSS for the overlay and banner content */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
+    }
+  
+    .banner-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+
+<div class="container mt-4">
+  <!-- Full-width Banner with Overlay -->
+  <div class="row mb-4 position-relative">
+    <div class="col-12">
+      <img src="{% static 'images/testbanner.png' %}" class="img-fluid" alt="Full-width Banner">
+      <div class="overlay"></div> <!-- Overlay -->
+      <div class="banner-content text-center text-white">
+        <h1>Test Purpose</h1>
+        <p>If you want, I can remove @login_required</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Left Sidebar with Filters -->
+    <div class="col-md-3">
+      <form method="get" action="{% url 'shop_page' %}">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Filters</h5>
+
+            <!-- Name Search Filter -->
+            <div class="mb-3">
+                <label for="name">Search by Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Product Name">
+              </div>
+
+            <!-- Add your filter fields here with checkboxes -->
+            <div class="mb-3">
+              <label for="category">Category</label>
+              <select class="form-select" name="category" id="category">
+                <option value="" selected>Choose...</option>
+                {% for category in categories %}
+                  <option value="{{ category.name }}">{{ category.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+  
+            <!-- Supplier Filter -->
+            <div class="mb-3">
+              <label for="supplier">Supplier</label>
+              <select class="form-select" name="supplier" id="supplier">
+                <option value="" selected>Choose...</option>
+                {% for supplier in suppliers %}
+                  <option value="{{ supplier.name }}">{{ supplier.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="mb-3">
+              <label for="price">Price Range</label>
+              <input type="text" class="form-control" name="price" id="price" placeholder="Min-Max">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Apply</button>
+            <a href="{% url 'shop_page' %}" class="btn btn-secondary">Reset</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Product Display -->
+    <div class="col-md-9">
+        <div class="row">
+          {% for product in products %}
+            <div class="col-md-3 mb-3">
+                <div class="card h-100" style="width: 170px;">
+                <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.product_name }}" style="height: 180px; width: 170px;">
+                <div class="card-body">
+                  <h5 class="card-title"style="height: 70px;">{{ product.product_name }}</h5>
+                  <p class="card-text">{{ product.description }}</p>
+                  <p class="card-text">Price: ${{ product.selling_price }}</p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

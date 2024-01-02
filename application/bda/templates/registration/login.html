@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PalpSoft{% endblock %}</title>
+
+    <!-- Include Bootstrap Datepicker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/css/OverlayScrollbars.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/css/jquery.dataTables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/css/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/blue-color.css' %}">
+    <link rel="stylesheet" id="rtlStyle" href="#">
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="light-theme">
+    <!-- main content start -->
+    <div class="main-content login-panel">
+        <div class="login-body">
+            {% comment %} <div class="top d-flex justify-content-between align-items-center">
+                <div class="logo">
+                    <img src="{% static 'images/palpsoft.png' %}" alt="Image Not Found" style="width: 150px; height: 70px;">
+                </div>
+                <a href="index.html"><i class="fa-duotone fa-house-chimney"></i></a>
+            </div> {% endcomment %}
+            <div class="bottom">
+                <h3 class="panel-title">Log In</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="input-group mb-25">
+                        <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                        <input type="text" class="form-control" name="{{ form.username.name }}" placeholder="Username">
+                        {% if form.username.errors %}
+                        <p class="error-message">{{ form.username.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="input-group mb-20">
+                        <span class="input-group-text"><i class="fa-regular fa-lock"></i></span>
+                        <input type="password" class="form-control rounded-end" name="{{ form.password.name }}" placeholder="Password">
+                        {% if form.password.errors %}
+                            <p class="error-message">{{ form.password.errors.0 }}</p>
+                        {% endif %}
+                        <a role="button" class="password-show"></a>
+                    </div>
+                    <button class="btn btn-primary w-100 login-btn">Login</button>
+                </form>
+
+                <div class="log__not-account"> <br/>
+                    <p>Already have an account? <a href="{% url 'login' %}"> Login</a></p>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- footer start -->
+        <div class="footer">
+            <p>Copyright ©  All Rights Reserved By <span class="text-primary">PalpSoft</span></p>
+        </div>
+        <!-- footer end -->
+    </div>
+    <!-- main content end -->
+    <script src=""></script>
+    <script src="{% static 'assets/vendor/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/js/jquery.overlayScrollbars.min.js' %}"></script>
+    {% comment %} <script src="{% static 'assets/vendor/js/apexcharts.js' %}"></script> {% endcomment %}
+    <script src="{% static 'assets/vendor/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/js/moment.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/js/daterangepicker.js' %}"></script>
+    <script src="{% static 'assets/vendor/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/dashboard.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/vendor/js/select2.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/js/jquery.table2excel.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/js/pdfmake.min.js' %}"></script>
+    <script src="{% static 'assets/js/select2-init.js' %}"></script>
+    <script src="{% static 'assets/js/order-list.js' %}"></script>
+</body>
+</html>

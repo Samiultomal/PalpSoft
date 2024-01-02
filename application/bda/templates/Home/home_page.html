@@ -1,0 +1,662 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Avrix - Digital Agency Portfolio Template">
+
+    <!-- ========== Page Title ========== -->
+    <title>PalpSoft</title>
+
+    <!-- ========== Favicon Icon ========== -->
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <!-- ========== Start Stylesheet ========== -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/flaticon-set.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/validnavs.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/helper.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/unit-test.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+    <!-- ========== End Stylesheet ========== -->
+
+    <!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+
+</head>
+
+<body class="bg-dark">
+
+    <!-- Header 
+    ============================================= -->
+    <header>
+        <!-- Start Navigation -->
+        <nav class="navbar mobile-sidenav navbar-default validnavs nav-full-width white bg-dark navbar-fixed">
+
+
+            <div class="container-full d-flex justify-content-between align-items-center">            
+                
+
+                <!-- Start Header Navigation -->
+                <div class="col-xl-2 col-lg-3">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="{% url 'home_page' %}">
+                            <img src="{% static 'images/palplogogreen.png' %}" class="logo logo-scrolled" alt="Logo">
+                        </a>
+                    </div>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="col-xl-7 col-lg-6">
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <div class="left-info">
+                            <p><strong>Contact</strong> <a href="mailto:info@palpsoft.com">info@palpsoft.com</a></p>
+                        </div>
+                        <div class="right-info">
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attr-right">
+                    <!-- Start Atribute Navigation -->
+                    <div class="attr-nav flex">
+                        <ul>
+                            <li class="side-menu">
+                                <a href="#">
+                                    <strong>MENU </strong>
+                                    <div class="line">
+                                        <span class="bar-1"></span>
+                                        <span class="bar-2"></span>
+                                        <span class="bar-3"></span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Atribute Navigation -->
+
+
+                    <div class="col-lg-2">
+                        <!-- Start Side Menu -->
+                        <div class="side text-light">
+                            <a href="#" class="close-side">Close <i class="fas fa-times"></i></a>
+                            <div class="widget">
+                                <div class="logo">
+                                    <img src="{% static 'images/palplogogreen.png' %}" alt="Logo">
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1">
+                                        <div class="side-navbar-inner">
+                                            <div class="simple-menu">
+                                                <ul class="simple-menu-list">
+                                                    <li>
+                                                        <a href="{% url 'home_page' %}">Home </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'login' %}">Sign In</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{% url 'register' %}">Sign Up</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1">
+                                        <div class="side-widgets">
+                                            <div class="widget address">
+                                                <div>
+                                                    <ul>
+                                                        <li>
+                                                            <div class="content">
+                                                                <p>Address</p> 
+                                                                <strong>Housing Estate, Kushtia, Bangladesh</strong>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="content">
+                                                                <p>Email</p> 
+                                                                <strong>support@palpsoft.com</strong>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="content">
+                                                                <p>Contact</p> 
+                                                                <strong>+8801308912839</strong>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="widget newsletter">
+                                                <h4 class="title">Get Subscribed!</h4>
+                                                <form method="post" action="{% url 'subscribe' %}">
+                                                    {% csrf_token %}
+                                                    <div class="input-group stylish-input-group">
+                                                        <input type="email" placeholder="Enter your e-mail" class="form-control" name="email" required>
+                                                        <span class="input-group-addon">
+                                                            <button type="submit">
+                                                                <i class="fas fa-arrow-right"></i>
+                                                            </button>  
+                                                        </span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="widget social">
+                                                <ul class="link">
+                                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- End Side Menu -->
+
+                    </div>
+                    </div>
+                <!-- Main Nav -->
+
+            </div>  
+            <!-- Overlay screen for menu -->
+            <div class="overlay-screen"></div>
+            <!-- End Overlay screen for menu --> 
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Header -->
+
+    <!-- Start Accordion Portfolio 
+    ============================================= -->
+    <div class="accrdion-portfolio-area">
+		<div class="container-fluid">
+			<!-- ACCORDION ROW -->
+			<div class="row">
+                <ul class="accordion-portfolio-lists text-light" id="accordion">
+                    <li style="background-image: url('{% static "images/portfolio/3.jpg" %}');">
+                        <h3>Web Application</h3>
+                        <span>01</span>
+                        <div class="accordion-overlay">
+                            <span>Application Development</span>
+                            <h2><a href="#" data-bs-toggle="modal" data-bs-target="#projectSingleModaltwo">Crafting Digital Excellence</a></h2>
+                            <p>
+                                We strive to empower businesses and individuals alike, enabling them to thrive in the dynamic digital landscape through cutting-edge web application development.
+                            </p>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#projectSingleModaltwo"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </li>
+                    <li style="background-image: url('{% static "images/portfolio/h3.jpg" %}');">
+                        <h3>Design Development</h3>
+                        <span>02</span>
+                        <div class="accordion-overlay">
+                            <span>Branding</span>
+                            <h2><a href="#" data-bs-toggle="modal" data-bs-target="#projectSingleModalfour">Elevate Your Brand Aesthetics</a></h2>
+                            <p>
+                                Whether you're looking for a striking logo, eye-catching graphics, or dynamic motion ads, we've got the expertise to turn your vision into a visual masterpiece.
+                            </p>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#projectSingleModalfour"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </li>
+                    <li style="background-image: url('{% static "images/portfolio/5.jpg" %}');">
+                        <h3>Digital Marketing</h3>
+                        <span>03</span>
+                        <div class="accordion-overlay">
+                            <span>Digital Marketing</span>
+                            <h2><a href="#" data-bs-toggle="modal" data-bs-target="#projectSingleModalthree">Unlocking Digital Success</a></h2>
+                            <p>
+                                In the ever-evolving digital landscape, our team is committed to propelling your brand to new heights, maximizing online visibility, and driving impactful results that resonate with your audience.
+                            </p>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#projectSingleModalthree"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </li>
+                    <li style="background-image: url('{% static "images/portfolio/4.jpg" %}');">
+                        <h3>Artificial Intelligence</h3>
+                        <span>04</span>
+                        <div class="accordion-overlay">
+                            <span>AI Tools Development</span>
+                            <h2><a href="#" data-bs-toggle="modal" data-bs-target="#projectSingleModal">Future with Intelligent Solutions
+
+                            </a></h2>
+                            <p>
+                                We specialize in crafting intelligent solutions that empower organizations. to stay ahead in the ever-evolving digital landscape.
+                            </p>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#projectSingleModal"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </li>
+                </ul>
+			</div>
+			<!-- BEGIN NEW ROW AFTER ACCORDION -->
+        </div>
+    </div>
+    <!-- End According Portfolio -->
+
+     <!-- Start Accordion Single Modal 
+    ============================================= -->
+    <div class="popup-single-modal modal fade text-light" id="projectSingleModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="project-details-items">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            </div>
+                            <div class="col-xl-10 offset-xl-1">
+        
+                                <div class="project-details mt-40">
+                                    <div class="top-info">
+                                        <div class="row">
+
+                                            <div class="col-lg-4 order-lg-last">
+                                                <ul class="gallery-project-basic-info">
+                                                    <li>
+                                                        <div class="info">
+                                                            Our Product: <span>Sales AI</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Project Type: <span>AI Tools</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Total Clients: <span>20+</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Developed By <span>Palp Soft LTD</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-lg-8">
+                                                <h2>AI Development</h2>
+                                                <p>
+                                                    Our team of seasoned experts is dedicated to pushing the boundaries of what AI can achieve. From machine learning algorithms to natural language processing, we specialize in developing AI tools that understand, learn, and adapt to your unique business needs. We understand that every business is unique. That's why we pride ourselves on delivering bespoke AI solutions tailored to your specific requirements. Our team works closely with you to identify challenges, analyze data, and design AI tools that provide unparalleled value.
+
+                                                </p>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-40 mb-40">
+                                        
+                                        <div class="col-lg-5 pr-50 pr-md-15 pr-xs-15">
+                                            <div class="check-list">
+                                                <div class="single-list">
+                                                    <h4>Our Services</h4>
+                                                    <ul class="list-disc">
+                                                        <li>AI Consulting</li>
+                                                        <li>AI Tool Development</li>
+                                                        <li>Maintenance and Support</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="single-list">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+        
+                                    <p>
+                                        Embark on your AI journey with confidence. Our experienced consultants guide you through the intricacies of AI adoption, helping you make informed decisions that align with your business goals. Transform your vision into reality with our expert AI tool development services. From concept to deployment, we ensure that your AI solution is robust, scalable, and tailored to your unique requirements. Our commitment to your success goes beyond development. We provide ongoing maintenance and support to ensure your AI tools operate seamlessly, allowing you to focus on what matters most—your business. <br/>  <br/> Join us on the journey to a smarter future. At Palp Soft, we're not just developing AI tools; we're shaping a world where intelligence meets innovation. Contact us today to explore the endless possibilities of intelligent solutions for your business.
+                                    </p>
+        
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Projects Single Modal -->
+
+
+    <!-- Start Accordion Single Modal 
+    ============================================= -->
+    <div class="popup-single-modal modal fade text-light" id="projectSingleModaltwo" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="project-details-items">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            </div>
+                            <div class="col-xl-10 offset-xl-1">
+        
+                                <div class="project-details mt-40">
+                                    <div class="top-info">
+                                        <div class="row">
+
+                                            <div class="col-lg-4 order-lg-last">
+                                                <ul class="gallery-project-basic-info">
+                                                    <li>
+                                                        <div class="info">
+                                                            Our Product: <span>Busienss Development Application</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Project Type: <span>Managment</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Total Clients: <span>50+</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Developed By <span>Palp Soft LTD</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-lg-8">
+                                                <h2>Application Development</h2>
+                                                <p>
+                                                    We transcend the ordinary and immerse ourselves in the extraordinary, specializing in the seamless development of web applications that redefine digital experiences. As a forward-thinking IT company, we are committed to transforming your ideas into robust, user-centric, and innovative web solutions. Our team of seasoned developers possesses a wealth of expertise in crafting web applications across diverse industries. From intuitive user interfaces to complex backend systems, we excel in delivering solutions that exceed expectations.
+
+                                                </p>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-40 mb-40">
+                                        
+                                        <div class="col-lg-5 pr-50 pr-md-15 pr-xs-15">
+                                            <div class="check-list">
+                                                <div class="single-list">
+                                                    <h4>Our Services</h4>
+                                                    <ul class="list-disc">
+                                                        <li>Design and Development</li>
+                                                        <li>Responsive Web Design</li>
+                                                        <li>Maintenance and Support</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="single-list">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+        
+                                    <p>
+                                        Embark on a digital journey with our expert web application development services. Whether you need a dynamic e-commerce platform, a powerful content management system, or a custom business application, we have you covered. In a mobile-centric world, having a responsive web presence is crucial. Our designs are not only visually stunning but also adapt seamlessly to various devices, ensuring a consistent and enjoyable user experience.
+                                     <br/>  <br/> We don't just develop web applications; we craft digital experiences that resonate with your audience. Elevate your online presence with solutions that go beyond the conventional. Contact us today, and let's embark on a journey of digital innovation together.
+                                    </p>
+        
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Projects Single Modal -->
+
+    <!-- Start Accordion Single Modal 
+    ============================================= -->
+    <div class="popup-single-modal modal fade text-light" id="projectSingleModalthree" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="project-details-items">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            </div>
+                            <div class="col-xl-10 offset-xl-1">
+        
+                                <div class="project-details mt-40">
+                                    <div class="top-info">
+                                        <div class="row">
+
+                                            <div class="col-lg-4 order-lg-last">
+                                                <ul class="gallery-project-basic-info">
+                                                    <li>
+                                                        <div class="info">
+                                                            Team Members: <span>40+</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Service Type: <span>Branding, Sale & Marketing</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Total Clients: <span>70+</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Served By <span>Palp Soft LTD</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-lg-8">
+                                                <h2>Digital Marketing</h2>
+                                                <p>
+                                                    We understand that digital marketing is more than just a strategy; it's an ongoing journey of connecting, engaging, and converting. Our approach is rooted in a deep understanding of your business, industry, and target audience, allowing us to tailor digital marketing solutions that align with your unique goals. Our team of seasoned digital marketers excels in strategic planning. We analyze market trends, competitor landscapes, and audience behaviors to develop a robust digital marketing strategy that positions your brand for success.
+
+                                                </p>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-40 mb-40">
+                                        
+                                        <div class="col-lg-5 pr-50 pr-md-15 pr-xs-15">
+                                            <div class="check-list">
+                                                <div class="single-list">
+                                                    <h4>Our Services</h4>
+                                                    <ul class="list-disc">
+                                                        <li>Market & Data Analysis</li>
+                                                        <li>Search Engine Optimization (SEO)</li>
+                                                        <li>Social Media Marketing</li>
+                                                        <li>Content Marketing</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="single-list">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+        
+                                    <p>
+                                        In the world of digital marketing, data is king. We harness the power of analytics to track, measure, and optimize campaigns continuously. This data-driven approach ensures that every marketing dollar spent contributes to tangible, measurable results. Compelling content lies at the heart of successful digital marketing. Our team of content creators crafts engaging, informative, and shareable content that not only captures attention but also builds lasting connections with your audience.
+                                     <br/>  <br/> Partner with Palp Soft and embark on a digital marketing journey that transcends boundaries. Our commitment is not just to deliver services but to drive digital success that propels your brand into the spotlight. Contact us today, and let's shape a digital strategy tailored to your unique vision and goals.
+                                    </p>
+        
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Projects Single Modal -->
+
+    <!-- Start Accordion Single Modal 
+    ============================================= -->
+    <div class="popup-single-modal modal fade text-light" id="projectSingleModalfour" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="project-details-items">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            </div>
+                            <div class="col-xl-10 offset-xl-1">
+        
+                                <div class="project-details mt-40">
+                                    <div class="top-info">
+                                        <div class="row">
+
+                                            <div class="col-lg-4 order-lg-last">
+                                                <ul class="gallery-project-basic-info">
+                                                    <li>
+                                                        <div class="info">
+                                                            Team Members: <span>60+</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Service Type: <span>Branding and Identity</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Total Clients: <span>35+</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="info">
+                                                            Served By <span>Palp Soft LTD</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-lg-8">
+                                                <h2>Graphic & Motion Design</h2>
+                                                <p>
+                                                    Where creativity meets innovation. Our Graphic Design and Motion Ads services are designed to breathe life into your brand, creating visually stunning and impactful designs that captivate your audience and leave a lasting impression. Our team of designers and motion graphics experts is driven by a passion for creativity. We don't just design; we create visual experiences that resonate with your audience and convey your brand story. We believe in collaborative partnerships, working closely with you to understand your brand, objectives, and preferences to deliver designs that exceed expectations.
+
+                                                </p>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-40 mb-40">
+                                        
+                                        <div class="col-lg-5 pr-50 pr-md-15 pr-xs-15">
+                                            <div class="check-list">
+                                                <div class="single-list">
+                                                    <h4>Our Services</h4>
+                                                    <ul class="list-disc">
+                                                        <li>Graphic Design Services</li>
+                                                        <li>Motion Ads Services</li>
+                                                        <li>Web Design</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="single-list">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    
+        
+                                    <p>
+                                        In the fast-paced digital world, motion grabs attention. We infuse innovation into motion ads, ensuring that your brand stands out and leaves a lasting impact on your audience. We understand the importance of deadlines. Our streamlined processes and commitment to efficiency ensure that your graphic design and motion ads projects are delivered on time, without compromising quality.
+                                     <br/>  <br/> Transform your brand aesthetics with Palp Soft's Graphic Design and Motion Ads services. Whether you're looking to refresh your logo, create stunning graphics, or bring your ads to life with motion, we're here to make it happen. Contact us today, and let's embark on a visual journey that elevates your brand to new heights.
+                                    </p>
+        
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Projects Single Modal -->
+
+    
+    <!-- jQuery Frameworks
+    ============================================= -->
+
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jquery.appear.js' %}"></script>
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/progress-bar.min.js' %}"></script>
+    <script src="{% static 'js/circle-progress.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/count-to.js' %}"></script>
+    <script src="{% static 'js/jquery.scrolla.min.js' %}"></script>
+    <script src="{% static 'js/ScrollOnReveal.js' %}"></script>
+    <script src="{% static 'js/YTPlayer.min.js' %}"></script>
+    <script src="{% static 'js/validnavs.js' %}"></script>
+    <script src="{% static 'js/gsap.js' %}"></script>
+    <script src="{% static 'js/ScrollTrigger.min.js' %}"></script>
+    <script src="{% static 'js/ScrollSmoother.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>    
+
+</body>
+</html>

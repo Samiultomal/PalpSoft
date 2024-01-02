@@ -1,0 +1,289 @@
+<!-- templates/dashboard.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  
+        <div class="dashboard-breadcrumb mb-25">
+            <h2>User Dashboard</h2>
+        </div>
+
+        <div class="row mb-25">
+            <div class="col-lg-3 col-6 col-xs-12">
+                <div class="dashboard-top-box rounded-bottom panel-bg">
+                    <div class="left">
+                        <h3>{{ total_purchase_quantity }}</h3>
+                        <p>Total Purchase Quantity</p>
+                    </div>
+                    <div class="right">
+                        <div class="part-icon rounded">
+                            <span><i class="fa-solid fa-warehouse"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6 col-xs-12">
+                <div class="dashboard-top-box rounded-bottom panel-bg">
+                    <div class="left">
+                        <h3>{{ total_suppliers }}</h3>
+                        <p>Total Supplier</p>
+                    </div>
+                    <div class="right">
+                        <div class="part-icon rounded">
+                            <span><i class="fa-solid fa-industry"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6 col-xs-12">
+                <div class="dashboard-top-box rounded-bottom panel-bg">
+                    <div class="left">
+                        <h3>{{ total_sold_quantity }}</h3>
+                        <p>Total Sold Quanity</p>
+                    </div>
+                    <div class="right">
+                        <div class="part-icon rounded">
+                            <span><i class="fa-solid fa-cart-shopping"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6 col-xs-12">
+                <div class="dashboard-top-box rounded-bottom panel-bg">
+                    <div class="left">
+                        <h3>{{ total_customers }}</h3>
+                        <p>Total Customer</p>
+                    </div>
+                    <div class="right">
+                        <div class="part-icon rounded">
+                            <span><i class="fa-regular fa-user"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-25">
+            <div class="col-lg-3 col-6 col-xs-12">
+                <div class="dashboard-top-box rounded-bottom panel-bg">
+                    <div class="left">
+                        <h3>{{ total_sold_amount }}</h3>
+                        <p>Total Sold Amount</p>
+                    </div>
+                    <div class="right">
+                        <div class="part-icon rounded">
+                            <span><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6 col-xs-12">
+                <div class="dashboard-top-box rounded-bottom panel-bg">
+                    <div class="left">
+                        <h3>{{ total_purchase_amount }}</h3>
+                        <p>Total Purchase Amount</p>
+                    </div>
+                    <div class="right">
+                        <div class="part-icon rounded">
+                            <span><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6 col-xs-12">
+                <div class="dashboard-top-box rounded-bottom panel-bg">
+                    <div class="left">
+                        <h3>{{ total_available_quantity }}</h3>
+                        <p>Total Available Quanity</p>
+                    </div>
+                    <div class="right">
+                        <div class="part-icon rounded">
+                            <span><i class="fa-solid fa-money-bill-trend-up"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6 col-xs-12">
+                <div class="dashboard-top-box rounded-bottom panel-bg">
+                    <div class="left">
+                        <h3>{{ available_stock_amount }}</h3>
+                        <p>Stock Valuation</p>
+                    </div>
+                    <div class="right">
+                        <div class="part-icon rounded">
+                            <span><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xxl-8">
+                <div class="panel chart-panel-1">
+                    <div class="panel-header">
+                        <h5>Sales Analytics</h5>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-dark">
+                            <canvas id="salesOverviewChart" width="300" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl-8">
+                <div class="panel chart-panel-1">
+                    <div class="panel-header">
+                        <h5>Top Selling Product</h5>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-dark">
+                            <canvas id="topSellingProductsChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl-8">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h5>Recent Orders</h5>
+                        <div id="tableSearch"></div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-dashed recent-order-table" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>Sale</th>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Total Price</th>
+                                    <th>Creation Date</th>
+                                    <th>Last Updated</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for sale_item in sale_items %}
+                                    <tr>
+                                        <td>{{ sale_item.sale }}</td>
+                                        <td>{{ sale_item.product.product_name }}</td>
+                                        <td>{{ sale_item.quantity }}</td>
+                                        <td>{{ sale_item.unit_price }}</td>
+                                        <td>{{ sale_item.total_price }}</td>
+                                        <td>{{ sale_item.creation_date }}</td>
+                                        <td>{{ sale_item.last_updated }}</td>
+                                        <td>
+                                            <div class="btn-box">
+                                                <a href="{% url 'saleitem_update' pk=sale_item.pk %}">
+                                                    <button><i class="fa-light fa-pen"></i></button>
+                                                </a>
+                                                <a href="{% url 'saleitem_delete' pk=sale_item.pk %}">
+                                                    <button><i class="fa-light fa-trash"></i></button>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="table-bottom-control"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Get the monthly sales data from the context
+            var monthlySalesData = {{ monthly_sales_data|safe }};
+        
+            // Parse the data and labels
+            var salesData = monthlySalesData.map(function(entry) {
+                return entry.total_amount;
+            });
+        
+            var monthLabels = monthlySalesData.map(function(entry) {
+                return entry.month;
+            });
+        
+            // Create the chart with point styling
+            document.addEventListener('DOMContentLoaded', function() {
+                var ctx = document.getElementById('salesOverviewChart').getContext('2d');
+                var salesChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: monthLabels,
+                        datasets: [{
+                            label: 'Monthly Sales',
+                    data: salesData,
+                    borderColor: '#6AB74F', // Change the color to #6AB74F
+                    borderWidth: 2,
+                    fill: false,
+                    pointStyle: 'circle', // Set the point style to 'circle'
+                    radius: 5,             // Set the radius of the point
+                    yAxisID: 'sales-axis'
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Total Amount'
+                                },
+                                position: 'bottom', // Change the position to 'bottom'
+                                id: 'sales-axis'
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Month'
+                                },
+                                position: 'bottom'
+                            }
+                        },
+                        layout: {
+                            padding: {
+                                left: 10,
+                                right: 10
+                            }
+                        }
+                    }
+                });
+            });
+
+
+     // Fetch data from Django context
+        var topSellingProductsData = {{ top_selling_products_data|safe }};
+
+        // Create Line Chart (Stacked)
+        var ctx = document.getElementById('topSellingProductsChart').getContext('2d');
+        var topSellingProductsChart = new Chart(ctx, {
+            type: 'line',
+            data: topSellingProductsData,
+            options: {
+            layout: {
+                padding: {
+                left: 10,
+                right: 10
+                }
+            },
+            scales: {
+                x: {
+                beginAtZero: true
+                },
+                y: {
+                beginAtZero: true
+                }
+            }
+            }
+        });
+
+        
+        </script>
+        
+
+
+{% endblock %}
